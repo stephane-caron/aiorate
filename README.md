@@ -12,13 +12,20 @@ Loop frequency regulation for [asyncio](https://docs.python.org/3/library/asynci
 pip install aiorate
 ```
 
-## Usage
+## Example
 
 ```python
-async def my_loop():
+import asyncio
+import aiorate
+
+async def main():
     frequency = 400.0  # [Hz]
     rate = aiorate.Rate(frequency, "my_rate_limiter")
-    while keep_going:
-        do_loop_things()
+    event_loop = asyncio.get_event_loop()
+    while True:
+        print(f"Hello from loop at {asyncio.get_event_loop().time():.3f} [s]")
         await rate.sleep()
+
+if __name__ == "__main__":
+    asyncio.run(main())
 ```
