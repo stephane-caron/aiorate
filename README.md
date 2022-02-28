@@ -4,7 +4,7 @@
 [![PyPI package](https://img.shields.io/pypi/v/aiorate)](https://pypi.org/project/aiorate/)
 ![Status](https://img.shields.io/pypi/status/aiorate)
 
-Loop frequency regulation for [asyncio](https://docs.python.org/3/library/asyncio.html), with an API similar to [rospy.Rate](https://wiki.ros.org/rospy/Overview/Time#Sleeping_and_Rates).
+Loop frequency regulation for [asyncio](https://docs.python.org/3/library/asyncio.html) with an API similar to [rospy.Rate](https://wiki.ros.org/rospy/Overview/Time#Sleeping_and_Rates).
 
 ## Installation
 
