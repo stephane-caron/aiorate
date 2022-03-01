@@ -21,7 +21,6 @@ import aiorate
 async def main():
     frequency = 400.0  # [Hz]
     rate = aiorate.Rate(frequency, "my_rate_limiter")
-    event_loop = asyncio.get_event_loop()
     while True:
         print(f"Hello from loop at {asyncio.get_event_loop().time():.3f} [s]")
         await rate.sleep()
