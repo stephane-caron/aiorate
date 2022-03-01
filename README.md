@@ -19,7 +19,7 @@ import asyncio
 import aiorate
 
 async def main():
-    rate = aiorate.Rate(400.0)  # 400 Hz
+    rate = aiorate.Rate(400.0)  # Hz
     while True:
         loop_time = asyncio.get_event_loop().time()
         print(f"Hello from loop at {loop_time:.3f} s")
