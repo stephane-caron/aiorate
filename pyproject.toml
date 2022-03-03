@@ -37,7 +37,7 @@ doc = [
 
 [project.urls]
 Documentation = "https://scaron.info/doc/aiorate/"
-Source = "https://github.com/stephane-caron/aiorate"
+Source = "https://github.com/tasts-robots/aiorate"
 
 [tool.black]
 line-length = 79
