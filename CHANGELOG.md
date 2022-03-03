@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - ``Rate.remaining`` function to match the ``rospy.Rate`` API
 
+### Changed
+
+- Sacrify Python 3.7 support for unit testing
+
 ### Fixed
 
 - Type annotation for ``Rate.loop`` member
