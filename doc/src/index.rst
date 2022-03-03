@@ -14,5 +14,6 @@ Loop frequency regulation for `asyncio <https://docs.python.org/3/library/asynci
     :maxdepth: 1
 
     installation.rst
+    rate.rst
 
 You can also download this documentation as a `PDF document <aiorate.pdf>`_.

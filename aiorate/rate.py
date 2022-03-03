@@ -27,10 +27,17 @@ class Rate:
     """
     Non-blocking loop frequency limiter.
 
-    It is basically the same as in
-    [pymanoid.sim](https://github.com/stephane-caron/pymanoid/blob/d3e2098e40656943f2639f90a1ec4269cf730157/pymanoid/sim.py#L140)
-    and not as sophisticated as
-    [rospy.Rate](https://github.com/ros/ros_comm/blob/noetic-devel/clients/rospy/src/rospy/timer.py).
+    Notes
+    -----
+    This rate limiter is basically the same as in the one from pymanoid_. It is
+    not as sophisticated as rospy.Rate_ but does the job with reliable
+    repeatability.
+
+    .. _pymanoid:
+        https://github.com/stephane-caron/pymanoid/blob/d3e2098e40656943f2639f90a1ec4269cf730157/pymanoid/sim.py#L140
+
+    .. _rospy.Rate:
+        https://github.com/ros/ros_comm/blob/noetic-devel/clients/rospy/src/rospy/timer.py
 
     The difference between a blocking clock and a rate limiter lies in the
     behavior when skipping cycles. A rate limiter does nothing if there is no
@@ -38,6 +45,14 @@ class Rate:
     contrary, a synchronous clock waits for the next tick, which is by
     definition in the future, so it always waits for a non-zero duration.
     """
+
+    last_measurement_time: float
+    loop: asyncio.unix_events._UnixSelectorEventLoop
+    margin: float
+    measured_period: float
+    name: str
+    next_time: float
+    period: float
 
     def __init__(self, frequency: float, name: str = "rate_limiter"):
         """
@@ -51,8 +66,8 @@ class Rate:
         period = 1.0 / frequency
         assert loop.is_running()
         self.last_measurement_time = loop.time()
-        self.margin = 1.0
         self.loop = loop
+        self.margin = 1.0
         self.measured_period = 0.0
         self.name = name
         self.next_time = loop.time() + period
@@ -66,13 +81,13 @@ class Rate:
 
         Args:
             block_duration: the coroutine blocks the event loop for this
-                duration (in [s]) before the next tick. It is non-blocking
+                duration (in seconds) before the next tick. It is non-blocking
                 before that.
 
         The block duration helps trim period overshoots and brings the measured
         period much closer to the desired one (< 2% average error vs. 8-12%
         average error with a single asyncio.sleep). Empirically a block
-        duration of 0.5 [ms] gives good behavior at 400 Hz or lower.
+        duration of 0.5 ms gives good behavior at 400 Hz or lower.
         """
         current_time = self.loop.time()
         slack = self.next_time - current_time
