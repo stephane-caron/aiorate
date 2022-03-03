@@ -2,21 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## [0.2] - 2022/03/03
 
 ### Added
 
+- Documentation
 - Small example in the README
-- Started CHANGELOG
+- Start CHANGELOG
 
 ### Changed
 
 - Remove custom documentation CSS
 - Update project URL
-
-### Fixed
-
-- ...
 
 ## [0.1] - 2022/02/28
 
