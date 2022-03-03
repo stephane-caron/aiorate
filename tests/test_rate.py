@@ -46,6 +46,9 @@ class TestRate(unittest.IsolatedAsyncioTestCase):
 
     async def test_sleep(self):
         await self.rate.sleep()
+        await self.rate.sleep()  # presumably slack > 0.0
+        await asyncio.sleep(self.rate.period)
+        await self.rate.sleep()  # now for sure slack < 0.0
 
 
 if __name__ == "__main__":

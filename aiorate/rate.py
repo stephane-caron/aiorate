@@ -110,7 +110,7 @@ class Rate:
                 logging.warning(
                     "%s is late by %f [ms]", self.name, round(late_ms, 1)
                 )
-        else:  # slack > 0.
+        else:  # slack > 0.0
             self.margin = slack / self.period
             block_time = self.next_time - block_duration
             while self.loop.time() < self.next_time:
