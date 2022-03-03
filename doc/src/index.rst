@@ -6,7 +6,7 @@
 aiorate
 #######
 
-Loop frequency regulation for `asyncio <https://docs.python.org/3/library/asyncio.html>`_, with an API similar to `rospy.Rate <https://wiki.ros.org/rospy/Overview/Time#Sleeping_and_Rates>`_.
+Loop frequency regulator for `asyncio <https://docs.python.org/3/library/asyncio.html>`_, with an API similar to `rospy.Rate <https://wiki.ros.org/rospy/Overview/Time#Sleeping_and_Rates>`_.
 
 .. **Release 0.2 -- March 3, 2022**
 

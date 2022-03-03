@@ -19,7 +19,7 @@
 # along with aiorate. If not, see <http://www.gnu.org/licenses/>.
 
 """
-Loop frequency regulation for asyncio
+Loop frequency regulator for asyncio.
 """
 
 from .rate import Rate
