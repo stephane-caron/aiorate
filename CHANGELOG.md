@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Added
+
+- ``Rate.remaining`` function to match the ``rospy.Rate`` API
+
 ### Fixed
 
 - Type annotation for ``Rate.loop`` member

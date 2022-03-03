@@ -33,9 +33,9 @@ class Rate:
 
     Notes
     -----
-    This rate limiter is basically the same as in the one from pymanoid_. It is
-    not as sophisticated as rospy.Rate_ but does the job with reliable
-    repeatability.
+    This rate limiter is basically the same as in the one from pymanoid_. It
+    relies on the event loop time never jumping backwards nor forwards, so that
+    it does not handle such cases contrary to e.g. rospy.Rate_.
 
     .. _pymanoid:
         https://github.com/stephane-caron/pymanoid/blob/d3e2098e40656943f2639f90a1ec4269cf730157/pymanoid/sim.py#L140
@@ -77,6 +77,15 @@ class Rate:
         self.next_time = loop.time() + period
         self.period = period
 
+    async def remaining(self) -> float:
+        """
+        Get the time remaining until the next expected clock tick.
+
+        Returns:
+            Time remaining until the next expected clock tick.
+        """
+        return self.next_time - self.loop.time()
+
     async def sleep(self, block_duration: float = 5e-4):
         """
         Sleep the duration required to regulate the loop frequency.
@@ -93,14 +102,13 @@ class Rate:
         average error with a single asyncio.sleep). Empirically a block
         duration of 0.5 ms gives good behavior at 400 Hz or lower.
         """
-        current_time = self.loop.time()
-        slack = self.next_time - current_time
+        slack = self.next_time - self.loop.time()
         if slack <= 0.0:
             self.margin = 0.0
             if slack < -0.1 * self.period:
                 late_ms = -1000.0 * slack
                 logging.warning(
-                    f"{self.name} is late by {round(late_ms, 1)} [ms]"
+                    "%s is late by %f [ms]", self.name, round(late_ms, 1)
                 )
         else:  # slack > 0.
             self.margin = slack / self.period
