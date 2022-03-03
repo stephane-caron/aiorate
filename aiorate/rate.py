@@ -19,7 +19,15 @@
 # along with aiorate. If not, see <http://www.gnu.org/licenses/>.
 
 """
-Non-blocking loop frequency limiter.
+This module provides a non-blocking loop frequency limiter in the :class:`Rate`
+class.
+
+Note that there is a difference between a (non-blocking) rate limiter and a
+(blocking) synchronous clock, which lies in the behavior when skipping cycles.
+A rate limiter does nothing if there is no time left, as the caller's rate does
+not need to be limited. On the contrary, a synchronous clock waits for the next
+tick, which is by definition in the future, so it always waits for a non-zero
+duration.
 """
 
 import asyncio
@@ -42,12 +50,6 @@ class Rate:
 
     .. _rospy.Rate:
         https://github.com/ros/ros_comm/blob/noetic-devel/clients/rospy/src/rospy/timer.py
-
-    The difference between a blocking clock and a rate limiter lies in the
-    behavior when skipping cycles. A rate limiter does nothing if there is no
-    time left, as the caller's rate does not need to be limited. On the
-    contrary, a synchronous clock waits for the next tick, which is by
-    definition in the future, so it always waits for a non-zero duration.
     """
 
     last_measurement_time: float
@@ -82,7 +84,7 @@ class Rate:
         Get the time remaining until the next expected clock tick.
 
         Returns:
-            Time remaining until the next expected clock tick.
+            Time remaining, in seconds, until the next expected clock tick.
         """
         return self.next_time - self.loop.time()
 

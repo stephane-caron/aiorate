@@ -13,7 +13,7 @@ Loop frequency regulator for `asyncio <https://docs.python.org/3/library/asyncio
 .. toctree::
 
     installation.rst
-    rate.rst
+    rate-limiter.rst
 
 In short, a loop is rate-regulated this way:
 
