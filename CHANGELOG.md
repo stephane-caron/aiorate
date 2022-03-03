@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - ``Rate.remaining`` function to match the ``rospy.Rate`` API
+- Unit tests for all functions
 
 ### Changed
 

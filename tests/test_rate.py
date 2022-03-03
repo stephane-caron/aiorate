@@ -22,20 +22,30 @@
 Test  rate limiter.
 """
 
+import asyncio
 import unittest
 
 import aiorate
 
 
-class TestRate(unittest.TestCase):
-    def setUp(self):
+class TestRate(unittest.IsolatedAsyncioTestCase):
+    async def asyncSetUp(self):
         """
-        Prepare test fixture.
+        Initialize a rate with 1 ms period.
         """
-        pass
+        self.rate = aiorate.Rate(1000.0)
 
-    def test_module(self):
-        self.assertIsNotNone(aiorate.Rate)
+    async def test_init(self):
+        self.assertIsNotNone(self.rate)
+
+    async def test_remaining(self):
+        await self.rate.sleep()
+        await asyncio.sleep(self.rate.period)
+        remaining = await self.rate.remaining()
+        self.assertLess(remaining, 0.0)
+
+    async def test_sleep(self):
+        await self.rate.sleep()
 
 
 if __name__ == "__main__":
