@@ -47,7 +47,7 @@ class Rate:
     """
 
     last_measurement_time: float
-    loop: asyncio.unix_events._UnixSelectorEventLoop
+    loop: asyncio.AbstractEventLoop
     margin: float
     measured_period: float
     name: str

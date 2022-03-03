@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Fixed
+
+- Type annotation for ``Rate.loop`` member
+
 ## [0.2] - 2022/03/03
 
 ### Added
