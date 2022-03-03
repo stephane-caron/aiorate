@@ -2,18 +2,34 @@
 
 .. title:: Table of Contents
 
-######
+#######
 aiorate
 #######
 
 Loop frequency regulation for `asyncio <https://docs.python.org/3/library/asyncio.html>`_, with an API similar to `rospy.Rate <https://wiki.ros.org/rospy/Overview/Time#Sleeping_and_Rates>`_.
 
-.. **Release 0.1 -- February 28, 2022**
+.. **Release 0.2 -- March 3, 2022**
 
 .. toctree::
-    :maxdepth: 1
 
     installation.rst
     rate.rst
 
-You can also download this documentation as a `PDF document <aiorate.pdf>`_.
+In short, a loop is rate-regulated this way:
+
+.. code:: python
+
+    import asyncio
+    import aiorate
+
+    async def main():
+        rate = aiorate.Rate(400.0)  # Hz
+        while True:
+            loop_time = asyncio.get_event_loop().time()
+            print(f"Hello from loop at {loop_time:.3f} s")
+            await rate.sleep()
+
+    if __name__ == "__main__":
+        asyncio.run(main())
+
+You can download the full documentation as a `PDF document <aiorate.pdf>`_.
