@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Fixed
+
+- Removal of Python 3.7 from GitHub workflow
+
 ## [0.3] - 2022/03/03
 
 ### Added
