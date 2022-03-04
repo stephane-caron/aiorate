@@ -37,13 +37,15 @@ import logging
 class Rate:
 
     """
-    Non-blocking loop frequency limiter.
+    Loop frequency limiter.
 
-    Notes
-    -----
-    This rate limiter is basically the same as in the one from pymanoid_. It
-    relies on the event loop time never jumping backwards nor forwards, so that
-    it does not handle such cases contrary to e.g. rospy.Rate_.
+    Calls to :func:`sleep` are non-blocking most of the time but become
+    blocking close to the next clock tick to get more reliable loop
+    frequencies.
+
+    This limiter is in essence the same as in the one from pymanoid_. It relies
+    on the event loop time never jumping backwards nor forwards, so that it
+    does not handle such cases contrary to e.g. rospy.Rate_.
 
     .. _pymanoid:
         https://github.com/stephane-caron/pymanoid/blob/d3e2098e40656943f2639f90a1ec4269cf730157/pymanoid/sim.py#L140
@@ -98,6 +100,10 @@ class Rate:
             block_duration: the coroutine blocks the event loop for this
                 duration (in seconds) before the next tick. It is non-blocking
                 before that.
+
+        Note:
+            A call to this function will be non-blocking *except* for the last
+            ``block_duration`` seconds of the limiter period.
 
         The block duration helps trim period overshoots and brings the measured
         period much closer to the desired one (< 2% average error vs. 8-12%
