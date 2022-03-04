@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2022 Stéphane Caron.
+# Copyright (c) 2022 The aiorate authors.
 #
 # This file is part of aiorate.
 #
@@ -63,7 +63,7 @@ master_doc = "index"
 
 # General information about the project.
 project = "aiorate"
-copyright = "2022 Stéphane Caron."
+copyright = "2022 The aiorate authors"
 author = "Stéphane Caron"
 
 # The version info for the project you're documenting, acts as replacement for

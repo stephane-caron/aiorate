@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2022 Stéphane Caron.
+# Copyright (c) 2022 The aiorate authors.
 #
 # This file is part of aiorate.
 #

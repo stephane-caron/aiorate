@@ -1,6 +1,6 @@
 # Makefile for Sphinx documentation
 #
-# Copyright (c) 2022 Stéphane Caron.
+# Copyright (c) 2022 The aiorate authors.
 #
 # This file is part of aiorate.
 #
