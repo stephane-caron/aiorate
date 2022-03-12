@@ -13,6 +13,13 @@ Loop frequency regulator for [asyncio](https://docs.python.org/3/library/asyncio
 pip install aiorate
 ```
 
+## Usage
+
+The ``[Rate](https://scaron.info/doc/aiorate/rate-limiter.html#aiorate.rate.Rate)`` class provides a non-blocking loop frequency limiter:
+
+* Set the loop frequency in Hz at construction: ``rate = aiorate.Rate(200.0)``
+* Call ``await rate.sleep()`` at every loop cycle
+
 ## Example
 
 ```python
