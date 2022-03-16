@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.9.1] - 2022/03/16
+
+### Added
+
+- PyPI links to the project configuration
+
+### Fixed
+
+- Add missing license field to project configuration
+- Required Python version in project configuration
+
 ## [0.9.0] - 2022/03/12
 
 Bumped the version number to 0.9 as the API is stable. Starting a bug-fixing window leading to v1.0.
