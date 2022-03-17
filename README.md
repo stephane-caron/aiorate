@@ -1,7 +1,7 @@
 # aiorate
 
 [![build](https://img.shields.io/github/workflow/status/stephane-caron/aiorate/CI)](https://github.com/stephane-caron/aiorate/actions)
-[![Documentation](https://img.shields.io/badge/docs-online-brightgreen?logo=read-the-docs&style=flat)](https://scaron.info/doc/aiorate/)
+[![Documentation](https://img.shields.io/badge/docs-online-brightgreen?logo=read-the-docs&style=flat)](https://tasts-robots.org/doc/aiorate/)
 [![PyPI package](https://img.shields.io/pypi/v/aiorate)](https://pypi.org/project/aiorate/)
 ![Status](https://img.shields.io/pypi/status/aiorate)
 
@@ -15,7 +15,7 @@ pip install aiorate
 
 ## Usage
 
-The [``Rate``](https://scaron.info/doc/aiorate/rate-limiter.html#aiorate.rate.Rate) class provides a non-blocking loop frequency limiter:
+The [``Rate``](https://tasts-robots.org/doc/aiorate/rate-limiter.html#aiorate.rate.Rate) class provides a non-blocking loop frequency limiter:
 
 * Set the loop frequency in Hz at construction: ``rate = aiorate.Rate(200.0)``
 * Call ``await rate.sleep()`` at every loop cycle

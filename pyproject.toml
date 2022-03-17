@@ -14,7 +14,6 @@ maintainers = [
 ]
 dynamic = ['version', 'description']
 requires-python = ">=3.8"
-homepage = "https://github.com/tasts-robots/aiorate"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -35,7 +34,7 @@ doc = [
 ]
 
 [project.urls]
-Documentation = "https://scaron.info/doc/aiorate/"
+Documentation = "https://tasts-robots.org/doc/aiorate/"
 Source = "https://github.com/tasts-robots/aiorate"
 Tracker = "https://github.com/tasts-robots/aiorate/issues"
 Changelog = "https://github.com/tasts-robots/aiorate/blob/master/CHANGELOG.md"

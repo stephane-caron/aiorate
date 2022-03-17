@@ -22,7 +22,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 SOURCEDIR     = src
 BUILDDIR      = build
-ONLINEDIR     = scaron.info:public_html/doc/aiorate
+ONLINEDIR     = tasts-robots.org:public_html/doc/aiorate
 PDFFILE       = aiorate.pdf
 
 .PHONY: help Makefile upload
