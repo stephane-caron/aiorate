@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Changed
+
+- Moved documentation to https://tasts-robots.org/doc/aiorate/
+- Switch license to Apache 2.0
+
 ## [0.9.1] - 2022/03/16
 
 ### Added
