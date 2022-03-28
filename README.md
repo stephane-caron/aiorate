@@ -2,8 +2,8 @@
 
 [![build](https://img.shields.io/github/workflow/status/stephane-caron/aiorate/CI)](https://github.com/stephane-caron/aiorate/actions)
 [![Documentation](https://img.shields.io/badge/docs-online-brightgreen?logo=read-the-docs&style=flat)](https://tasts-robots.org/doc/aiorate/)
-[![PyPI version](https://badge.fury.io/py/aiorate.svg)](https://badge.fury.io/py/aiorate)
-<!-- ![Status](https://img.shields.io/pypi/status/aiorate) -->
+[![PyPI version](https://img.shields.io/pypi/v/aiorate)](https://pypi.org/project/aiorate/)
+![Status](https://img.shields.io/pypi/status/aiorate)
 
 Loop frequency regulator for [asyncio](https://docs.python.org/3/library/asyncio.html) with an API similar to [``rospy.Rate``](https://wiki.ros.org/rospy/Overview/Time#Sleeping_and_Rates).
 
