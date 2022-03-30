@@ -1,6 +1,6 @@
 # aiorate
 
-[![build](https://img.shields.io/github/workflow/status/stephane-caron/aiorate/CI)](https://github.com/stephane-caron/aiorate/actions)
+[![build](https://img.shields.io/github/workflow/status/tasts-robots/aiorate/CI)](https://github.com/tasts-robots/aiorate/actions)
 [![Documentation](https://img.shields.io/badge/docs-online-brightgreen?logo=read-the-docs&style=flat)](https://tasts-robots.org/doc/aiorate/)
 [![PyPI version](https://img.shields.io/pypi/v/aiorate)](https://pypi.org/project/aiorate/)
 ![Status](https://img.shields.io/pypi/status/aiorate)
