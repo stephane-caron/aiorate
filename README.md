@@ -1,6 +1,7 @@
 # aiorate
 
-[![build](https://img.shields.io/github/workflow/status/tasts-robots/aiorate/CI)](https://github.com/tasts-robots/aiorate/actions)
+[![Build](https://img.shields.io/github/workflow/status/tasts-robots/aiorate/CI)](https://github.com/tasts-robots/aiorate/actions)
+[![Coverage](https://coveralls.io/repos/github/tasts-robots/aiorate/badge.svg?branch=master)](https://coveralls.io/github/tasts-robots/aiorate?branch=master)
 [![Documentation](https://img.shields.io/badge/docs-online-brightgreen?logo=read-the-docs&style=flat)](https://tasts-robots.org/doc/aiorate/)
 [![PyPI version](https://img.shields.io/pypi/v/aiorate)](https://pypi.org/project/aiorate/)
 ![Status](https://img.shields.io/pypi/status/aiorate)
