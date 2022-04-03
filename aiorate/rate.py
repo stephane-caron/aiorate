@@ -51,15 +51,11 @@ class Rate:
         https://github.com/ros/ros_comm/blob/noetic-devel/clients/rospy/src/rospy/timer.py
 
     Attributes:
-        last_loop_time: Event loop time at the end of the last call to
-            :func:`sleep`.
-        loop: Event loop from asyncio.
-        margin: Fraction of the desired period remaining at the last call to
-            :func:`sleep`.
-        measured_period: Actual period measured at the last call to
+        margin: Fraction of the desired period remaining at the beginning of
+            the last call to :func:`sleep`.
+        measured_period: Actual period measured at the end of the last call to
             :func:`sleep`.
         name: Human-readable name used for logging.
-        next_time: Time when we want the next call to :func:`sleep` to end.
         period: Desired loop period in [s].
     """
 
