@@ -27,7 +27,7 @@ async def main(frequency: float = 100.0):
     Print time at each cycle of a frequency-regulated loop.
 
     Args:
-        frequency: Loop frequency in [Hz].
+        frequency: Loop frequency in hertz.
     """
     rate = aiorate.Rate(frequency, "my_rate_limiter")
     event_loop = asyncio.get_event_loop()

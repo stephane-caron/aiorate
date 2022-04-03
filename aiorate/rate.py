@@ -56,7 +56,7 @@ class Rate:
         measured_period: Actual period measured at the end of the last call to
             :func:`sleep`.
         name: Human-readable name used for logging.
-        period: Desired loop period in [s].
+        period: Desired loop period in seconds.
     """
 
     last_loop_time: float
@@ -72,7 +72,7 @@ class Rate:
         Initialize rate limiter.
 
         Args:
-            frequency: Desired loop frequency in [Hz].
+            frequency: Desired loop frequency in hertz.
             name: Human-readable name used for logging.
         """
         loop = asyncio.get_event_loop()
