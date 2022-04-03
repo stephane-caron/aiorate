@@ -101,14 +101,14 @@ class Rate:
 
         This function is meant to be called once per loop cycle.
 
+        Note:
+            A call to this function will be non-blocking *except* for the last
+            ``block_duration`` seconds of the limiter period.
+
         Args:
             block_duration: the coroutine blocks the event loop for this
                 duration (in seconds) before the next tick. It is non-blocking
                 before that.
-
-        Note:
-            A call to this function will be non-blocking *except* for the last
-            ``block_duration`` seconds of the limiter period.
 
         The block duration helps trim period overshoots and brings the measured
         period much closer to the desired one (< 2% average error vs. 8-12%
