@@ -49,9 +49,21 @@ class Rate:
 
     .. _rospy.Rate:
         https://github.com/ros/ros_comm/blob/noetic-devel/clients/rospy/src/rospy/timer.py
+
+    Attributes:
+        last_loop_time: Event loop time at the end of the last call to
+            :func:`sleep`.
+        loop: Event loop from asyncio.
+        margin: Fraction of the desired period remaining at the last call to
+            :func:`sleep`.
+        measured_period: Actual period measured at the last call to
+            :func:`sleep`.
+        name: Human-readable name used for logging.
+        next_time: Time when we want the next call to :func:`sleep` to end.
+        period: Desired loop period in [s].
     """
 
-    last_measurement_time: float
+    last_loop_time: float
     loop: asyncio.AbstractEventLoop
     margin: float
     measured_period: float
@@ -70,7 +82,7 @@ class Rate:
         loop = asyncio.get_event_loop()
         period = 1.0 / frequency
         assert loop.is_running()
-        self.last_measurement_time = loop.time()
+        self.last_loop_time = loop.time()
         self.loop = loop
         self.margin = 1.0
         self.measured_period = 0.0
@@ -121,7 +133,7 @@ class Rate:
             while self.loop.time() < self.next_time:
                 if self.loop.time() < block_time:
                     await asyncio.sleep(1e-5)  # non-zero sleep duration
-        measurement_time = self.loop.time()
-        self.measured_period = measurement_time - self.last_measurement_time
-        self.last_measurement_time = measurement_time
-        self.next_time = measurement_time + self.period
+        loop_time = self.loop.time()
+        self.measured_period = loop_time - self.last_loop_time
+        self.last_loop_time = loop_time
+        self.next_time = loop_time + self.period
