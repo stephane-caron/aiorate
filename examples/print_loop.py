@@ -19,7 +19,7 @@ import asyncio
 
 import aiorate
 
-keep_going = True
+example_duration = 1.0  # seconds
 
 
 async def main(frequency: float = 100.0):
@@ -32,9 +32,10 @@ async def main(frequency: float = 100.0):
     rate = aiorate.Rate(frequency, "my_rate_limiter")
     event_loop = asyncio.get_event_loop()
     start_time = event_loop.time()
-    while keep_going:
+    loop_time = 0.0
+    while loop_time < example_duration:
         loop_time = event_loop.time() - start_time
-        print(f"Hello from loop at time {loop_time:.3f} [s]")
+        print(f"Hello from {frequency} Hz loop at time {loop_time:.3f} s")
         await rate.sleep()
 
 
