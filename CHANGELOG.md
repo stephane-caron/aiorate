@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Added
+
+- Second example with multiple loops at different rates
+
 ## [0.9.2] - 2022/03/17
 
 ### Changed
