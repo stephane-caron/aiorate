@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.0] - 2022/014/15
+## [1.0.1] - 2022/04/15
+
+### Changed
+
+- Allow installation on Python 3.7
+
+## [1.0.0] - 2022/04/15
 
 ### Added
 

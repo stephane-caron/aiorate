@@ -51,8 +51,8 @@ class Rate:
         https://github.com/ros/ros_comm/blob/noetic-devel/clients/rospy/src/rospy/timer.py
 
     Attributes:
-        measured_period: Actual period measured at the end of the last call to
-            :func:`sleep`.
+        measured_period: Actual period in seconds measured at the end of the
+            last call to :func:`sleep`.
         name: Human-readable name used for logging.
         period: Desired loop period in seconds.
         slack: Duration in seconds remaining until the next tick at the
