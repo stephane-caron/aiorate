@@ -63,7 +63,7 @@ class Rate:
     loop: asyncio.AbstractEventLoop
     measured_period: float
     name: str
-    next_time: float
+    next_tick: float
     period: float
     slack: float
 
@@ -83,7 +83,7 @@ class Rate:
         self.slack = 1.0
         self.measured_period = 0.0
         self.name = name
-        self.next_time = loop.time() + period
+        self.next_tick = loop.time() + period
         self.period = period
 
     async def remaining(self) -> float:
@@ -93,7 +93,7 @@ class Rate:
         Returns:
             Time remaining, in seconds, until the next expected clock tick.
         """
-        return self.next_time - self.loop.time()
+        return self.next_tick - self.loop.time()
 
     async def sleep(self, block_duration: float = 5e-4):
         """
@@ -128,4 +128,4 @@ class Rate:
         loop_time = self.loop.time()
         self.measured_period = loop_time - self.last_loop_time
         self.last_loop_time = loop_time
-        self.next_time = loop_time + self.period
+        self.next_tick = loop_time + self.period
