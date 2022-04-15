@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Second example with multiple loops at different rates
+- Unit test to cover `Rate.slack`
+
+### Changed
+
+- Marked as internal (`_` prefix) members not part of the public API
+- `Rate.margin` (percentage) is now `Rate.slack` (duration)
 
 ## [0.9.2] - 2022/03/17
 
@@ -44,7 +50,7 @@ Bumped the version number to 0.9 as the API is stable. Starting a bug-fixing win
 ### Added
 
 - Full unit test coverage
-- ``Rate.remaining`` function to match the ``rospy.Rate`` API
+- `Rate.remaining` function to match the `rospy.Rate` API
 
 ### Changed
 
@@ -52,7 +58,7 @@ Bumped the version number to 0.9 as the API is stable. Starting a bug-fixing win
 
 ### Fixed
 
-- Type annotation for ``Rate.loop`` member
+- Type annotation for `Rate.loop` member
 
 ## [0.2.0] - 2022/03/03
 
@@ -71,4 +77,4 @@ Bumped the version number to 0.9 as the API is stable. Starting a bug-fixing win
 
 ### Added
 
-- Loop rate limiter in ``Rate`` class
+- Loop rate limiter in `Rate` class
