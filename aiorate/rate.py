@@ -59,11 +59,11 @@ class Rate:
             beginning of the last call to :func:`sleep`.
     """
 
-    last_loop_time: float
-    loop: asyncio.AbstractEventLoop
+    _last_loop_time: float
+    _loop: asyncio.AbstractEventLoop
+    _next_tick: float
     measured_period: float
     name: str
-    next_tick: float
     period: float
     slack: float
 
@@ -78,13 +78,13 @@ class Rate:
         loop = asyncio.get_event_loop()
         period = 1.0 / frequency
         assert loop.is_running()
-        self.last_loop_time = loop.time()
-        self.loop = loop
-        self.slack = 1.0
+        self._last_loop_time = loop.time()
+        self._loop = loop
+        self._next_tick = loop.time() + period
         self.measured_period = 0.0
         self.name = name
-        self.next_tick = loop.time() + period
         self.period = period
+        self.slack = 1.0
 
     async def remaining(self) -> float:
         """
@@ -93,7 +93,7 @@ class Rate:
         Returns:
             Time remaining, in seconds, until the next expected clock tick.
         """
-        return self.next_tick - self.loop.time()
+        return self._next_tick - self._loop.time()
 
     async def sleep(self, block_duration: float = 5e-4):
         """
@@ -115,17 +115,17 @@ class Rate:
         average error with a single asyncio.sleep). Empirically a block
         duration of 0.5 ms gives good behavior at 400 Hz or lower.
         """
-        self.slack = self.next_tick - self.loop.time()
+        self.slack = self._next_tick - self._loop.time()
         if self.slack > 0.0:
-            block_time = self.next_tick - block_duration
-            while self.loop.time() < self.next_tick:
-                if self.loop.time() < block_time:
+            block_time = self._next_tick - block_duration
+            while self._loop.time() < self._next_tick:
+                if self._loop.time() < block_time:
                     await asyncio.sleep(1e-5)  # non-zero sleep duration
         elif self.slack < -0.1 * self.period:
             logging.warning(
                 "%s is late by %f [ms]", self.name, round(1e3 * self.slack, 1)
             )
-        loop_time = self.loop.time()
-        self.measured_period = loop_time - self.last_loop_time
-        self.last_loop_time = loop_time
-        self.next_tick = loop_time + self.period
+        loop_time = self._loop.time()
+        self.measured_period = loop_time - self._last_loop_time
+        self._last_loop_time = loop_time
+        self._next_tick = loop_time + self.period
