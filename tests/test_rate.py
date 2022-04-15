@@ -33,13 +33,28 @@ class TestRate(unittest.IsolatedAsyncioTestCase):
         self.rate = aiorate.Rate(1000.0)
 
     async def test_init(self):
+        """
+        Constructor completed.
+        """
         self.assertIsNotNone(self.rate)
 
     async def test_remaining(self):
+        """
+        After one period has expired, the "remaining" time becomes negative.
+        """
         await self.rate.sleep()
         await asyncio.sleep(self.rate.period)
         remaining = await self.rate.remaining()
         self.assertLess(remaining, 0.0)
+
+    async def test_slack(self):
+        """
+        Slack becomes negative as well after one period has expired.
+        """
+        await self.rate.sleep()
+        await asyncio.sleep(self.rate.period)
+        await self.rate.sleep()  # computes slack of previous period
+        self.assertLess(self.rate.slack, 0.0)
 
     async def test_sleep(self):
         await self.rate.sleep()
