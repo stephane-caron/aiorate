@@ -51,21 +51,21 @@ class Rate:
         https://github.com/ros/ros_comm/blob/noetic-devel/clients/rospy/src/rospy/timer.py
 
     Attributes:
-        margin: Fraction of the desired period remaining at the beginning of
-            the last call to :func:`sleep`.
         measured_period: Actual period measured at the end of the last call to
             :func:`sleep`.
         name: Human-readable name used for logging.
         period: Desired loop period in seconds.
+        slack: Duration in seconds remaining until the next tick at the
+            beginning of the last call to :func:`sleep`.
     """
 
     last_loop_time: float
     loop: asyncio.AbstractEventLoop
-    margin: float
     measured_period: float
     name: str
     next_time: float
     period: float
+    slack: float
 
     def __init__(self, frequency: float, name: str = "rate_limiter"):
         """
@@ -80,7 +80,7 @@ class Rate:
         assert loop.is_running()
         self.last_loop_time = loop.time()
         self.loop = loop
-        self.margin = 1.0
+        self.slack = 1.0
         self.measured_period = 0.0
         self.name = name
         self.next_time = loop.time() + period
@@ -115,20 +115,16 @@ class Rate:
         average error with a single asyncio.sleep). Empirically a block
         duration of 0.5 ms gives good behavior at 400 Hz or lower.
         """
-        slack = self.next_time - self.loop.time()
-        if slack <= 0.0:
-            self.margin = 0.0
-            if slack < -0.1 * self.period:
-                late_ms = -1000.0 * slack
-                logging.warning(
-                    "%s is late by %f [ms]", self.name, round(late_ms, 1)
-                )
-        else:  # slack > 0.0
-            self.margin = slack / self.period
-            block_time = self.next_time - block_duration
-            while self.loop.time() < self.next_time:
+        self.slack = self.next_tick - self.loop.time()
+        if self.slack > 0.0:
+            block_time = self.next_tick - block_duration
+            while self.loop.time() < self.next_tick:
                 if self.loop.time() < block_time:
                     await asyncio.sleep(1e-5)  # non-zero sleep duration
+        elif self.slack < -0.1 * self.period:
+            logging.warning(
+                "%s is late by %f [ms]", self.name, round(1e3 * self.slack, 1)
+            )
         loop_time = self.loop.time()
         self.measured_period = loop_time - self.last_loop_time
         self.last_loop_time = loop_time
