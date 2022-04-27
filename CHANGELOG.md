@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Fixed
+
+- Initialize slack at zero seconds
+
 ## [1.0.1] - 2022/04/15
 
 ### Changed

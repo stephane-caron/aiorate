@@ -84,7 +84,7 @@ class Rate:
         self.measured_period = 0.0
         self.name = name
         self.period = period
-        self.slack = 1.0
+        self.slack = 0.0
 
     async def remaining(self) -> float:
         """
