@@ -21,7 +21,7 @@ The [``Rate``](https://tasts-robots.org/doc/aiorate/rate-limiter.html#aiorate.ra
 * Set the loop frequency in Hz at construction: ``rate = aiorate.Rate(200.0)``
 * Call ``await rate.sleep()`` at every loop cycle
 
-## Example
+Here is what it looks like in practice:
 
 ```python
 import asyncio
@@ -37,3 +37,5 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+
+Check out the [examples](examples/) folder for more advance use cases, such as multiple loops running simultaneously at different rates.
