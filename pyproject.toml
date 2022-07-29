@@ -12,7 +12,8 @@ authors = [
 maintainers = [
     {name = "Stéphane Caron", email = "stephane.caron@normalesup.org"},
 ]
-dynamic = ['version', 'description']
+dynamic = ["version"]
+description = "Loop frequency regulation for asyncio"
 requires-python = ">=3.7"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
