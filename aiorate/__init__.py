@@ -23,4 +23,4 @@ from .rate import Rate
 
 __all__ = ["Rate"]
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"

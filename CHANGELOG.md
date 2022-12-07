@@ -2,7 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+**This project is archived as it has been superseded by [loop-rate-limiters](https://github.com/stephane-caron/loop-rate-limiters).**
+
+## [1.0.2] - 2022/12-07
 
 ### Fixed
 
