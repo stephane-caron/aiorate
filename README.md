@@ -7,6 +7,8 @@
 
 Loop frequency regulator for [asyncio](https://docs.python.org/3/library/asyncio.html) with an API similar to [``rospy.Rate``](https://wiki.ros.org/rospy/Overview/Time#Sleeping_and_Rates).
 
+**This project is archived as it has been superseded by [loop-rate-limiters](https://github.com/stephane-caron/loop-rate-limiters).**
+
 ## Installation
 
 ```sh
